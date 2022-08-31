@@ -18,7 +18,11 @@ function getMoviesFromDirector(array, director) {
 // Creem una funció per calcular la mitjana de les puntuacions
 function moviesAverage(arrayReduce) {
   // Amb "reduce" obtenim la puntuació mitjana sumant puntuacions. Després dividim per la longitud de l'array
-  let arrayAverage = Number((arrayReduce.reduce((a, b) => a + b.score, 0) / arrayReduce.length).toFixed(2));
+  let arrayAverage = Number(
+    (arrayReduce.reduce((a, b) => a + b.score, 0) / arrayReduce.length).toFixed(
+      2
+    )
+  );
   return arrayAverage;
 }
 // Aprofitem la funció "getMoviesFromDirector()" per fer array amb les pelicules del director triat
@@ -81,7 +85,21 @@ function moviesAverageByCategory(array, category) {
 }
 
 // Exercise 7: Modify the duration of movies to minutes
-function hoursToMinutes() {}
+function hoursToMinutes(array) {
+  // Recorrem l'array amb "map" i creem funcio
+  let result = array.map(function (x) {
+    let min = 0;
+    // Fem servir "split" per separar hores i minuts
+    let parts = x.duration.split(" ");
+    // Ternari per calcular els minuts totals segons si hi ha minuts o no
+    // Amb "parseInt" agafem només el numero enter
+    min = parts.length == 2 ? parseInt(parts[0])*60 + parseInt(parts[1]) : parseInt(parts[0])*60;
+    return { ...x, duration: min }
+  })
+  console.log('EXERCICE 7 ->', result);
+  return result;
+ 
+}
 
 // Exercise 8: Get the best film of a year
 function bestFilmOfYear() {}
