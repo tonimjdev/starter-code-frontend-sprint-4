@@ -1,3 +1,4 @@
+// IT Academy - Itinerari ANGULAR - Sprint 4 - Alumne: Toni Machado
 // Exercise 1: Get the array of all directors.
 function getAllDirectors(array) {
   // Amb "map" recorrem l'array d'objectes i retornem un nou array amb el director
@@ -90,19 +91,30 @@ function hoursToMinutes(array) {
   let result = array.map(function (x) {
     let min = 0;
     // Fem servir "split" per separar hores i minuts
-    let parts = x.duration.split(" ");
+    let parts = x.duration.split(' ');
     // Ternari per calcular els minuts totals segons si hi ha minuts o no
     // Amb "parseInt" agafem només el numero enter
-    min = parts.length == 2 ? parseInt(parts[0])*60 + parseInt(parts[1]) : parseInt(parts[0])*60;
-    return { ...x, duration: min }
-  })
+    min =
+      parts.length == 2
+        ? parseInt(parts[0]) * 60 + parseInt(parts[1])
+        : parseInt(parts[0]) * 60;
+    return { ...x, duration: min };
+  });
   console.log('EXERCICE 7 ->', result);
   return result;
- 
 }
 
 // Exercise 8: Get the best film of a year
-function bestFilmOfYear() {}
+function bestFilmOfYear(array, year) {
+  // Filtrem pel.licules de l'any triat
+  let moviesYear = array.filter((x) => x.year == year);
+  // Endrecem per puntuació de major a menor
+  let moviesSort = moviesYear.sort((a, b) => b.score - a.score);
+  // La millor pel.licula de l'any es troba a la posició 0 de l'array
+  let result = [moviesSort[0]];
+  console.log('EXERCICE 8 ->', result);
+  return result;
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
